@@ -47,8 +47,7 @@ class Server:
         """Return a dictionary containing the following key-value pairs"""
         data = self.get_page(page, page_size)
         total_pages = len(self.dataset()) / page_size
-        if len(self.dataset()) % page_size != 0:
-            total_pages += 1
+
         return {
             'page_size': len(data),
             'page': page,
