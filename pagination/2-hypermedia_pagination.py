@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
-"""Implement a method named get_page that takes two integer arguments
-page with default value 1 and page_size with default value 10."""
+"""
+Implement a get_hyper method that takes the same arguments
+(as get_page) and returns a dictionary containing
+key-value pairs
+"""
 
 import csv
+import math
 from typing import List
 
 
@@ -46,7 +50,7 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """Return a dictionary containing the following key-value pairs"""
         data = self.get_page(page, page_size)
-        total_pages = len(self.dataset()) / page_size
+        total_pages = math.ceil(len(self.dataset()) / page_size)
 
         return {
             'page_size': len(data),
@@ -54,5 +58,5 @@ class Server:
             'data': data,
             'next_page': page + 1 if page < total_pages else None,
             'prev_page': page - 1 if page > 1 else None,
-            'total_pages': int(total_pages)
+            'total_pages': total_pages,
         }
