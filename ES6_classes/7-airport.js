@@ -4,19 +4,7 @@ export default class Airport {
     this._code = code;
   }
 
-  get name() {
-    return this._name;
-  }
-
-  set name(newName) {
-    this._name = newName;
-  }
-
-  get code() {
+  get [Symbol.toStringTag]() {
     return this._code;
-  }
-
-  set code(newCode) {
-    this._code = newCode;
   }
 }
